@@ -19,6 +19,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <div>Goal: HODL 70% - Trade 30%</div>
     </div>
   );
 }
