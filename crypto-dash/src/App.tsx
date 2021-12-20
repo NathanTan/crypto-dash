@@ -1,10 +1,20 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { useWallet } from '@terra-money/wallet-provider';
+import Terra from './terra/Terra';
 
-function App() {
+function App(props: any) {
+
+  const { status, network, wallets } = useWallet();
+  console.log("upper")
+  console.log(props)
+
   return (
     <div className="App">
+      <head>
+        <meta name="terra-wallet" />
+      </head>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -20,7 +30,11 @@ function App() {
         </a>
       </header>
       <div>Goal: HODL 70% - Trade 30%</div>
+      <div>
+        <Terra connectWallet={props.createReadonlyWalletSession}/>
+      </div>
     </div>
+
   );
 }
 
