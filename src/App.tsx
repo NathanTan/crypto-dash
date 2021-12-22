@@ -1,17 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { useConnectedWallet, useWallet, WalletProvider } from '@terra-money/wallet-provider';
-import Terra from './terra/Terra';
+import React from 'react'
+import logo from './logo.svg'
+import './App.css'
+import { useConnectedWallet, useWallet, WalletProvider } from '@terra-money/wallet-provider'
+import Terra from './terra/Terra'
+import { useQuery, UseQueryResult } from 'react-query'
+import { TERRA_QUERY_KEY } from './terra/magicStrings'
 
 function App(props: any) {
 
-  const { status, network, wallets } = useWallet();
+  const { status, network, wallets } = useWallet()
   const wholeWallet = useWallet()
-  const connectedWallet = useConnectedWallet();
-
+  const connectedWallet = useConnectedWallet()
   console.log("upper")
+
+  console.log(wallets)
+  console.log(connectedWallet)
+
   console.log(props)
+
+
 
   return (
     <div className="App">
@@ -36,6 +43,7 @@ function App(props: any) {
       <div>
         <p>Wallet Stats</p>
         <p>{wholeWallet.status}</p>
+        
         <Terra connectWallet={props.createReadonlyWalletSession}/>
       </div>
     </div>
