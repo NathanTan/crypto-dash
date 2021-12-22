@@ -1,12 +1,15 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { useWallet } from '@terra-money/wallet-provider';
+import { useConnectedWallet, useWallet, WalletProvider } from '@terra-money/wallet-provider';
 import Terra from './terra/Terra';
 
 function App(props: any) {
 
   const { status, network, wallets } = useWallet();
+  const wholeWallet = useWallet()
+  const connectedWallet = useConnectedWallet();
+
   console.log("upper")
   console.log(props)
 
@@ -31,6 +34,8 @@ function App(props: any) {
       </header>
       <div>Goal: HODL 70% - Trade 30%</div>
       <div>
+        <p>Wallet Stats</p>
+        <p>{wholeWallet.status}</p>
         <Terra connectWallet={props.createReadonlyWalletSession}/>
       </div>
     </div>
